@@ -1,11 +1,11 @@
-﻿INSERT INTO Marque (NomMarque, PaysOrigine, AnneeFondation) 
+﻿INSERT INTO Avions.Marque (NomMarque, PaysOrigine, AnneeFondation) 
 VALUES ('Cessna', 'États-Unis', 1927),
        ('Piper', 'États-Unis', 1927),
        ('Cirrus', 'États-Unis', 1984);
 GO
 
 -- Insertion des modèles d'avions pour Cessna
-INSERT INTO ModeleAvion (MarqueID, NomModele, AnneeLancement, CapacitePassagers, Longueur) 
+INSERT INTO Avions.ModeleAvion (MarqueID, NomModele, AnneeLancement, CapacitePassagers, Longueur) 
 VALUES (1, '172 Skyhawk', 1955, 4, 8.23),
        (1, '182 Skylane', 1956, 4, 8.84),
        (1, '152', 1977, 2, 7.11),
@@ -13,7 +13,7 @@ VALUES (1, '172 Skyhawk', 1955, 4, 8.23),
 	   GO
 
 -- Insertion des modèles d'avions pour Piper
-INSERT INTO ModeleAvion (MarqueID, NomModele, AnneeLancement, CapacitePassagers, Longueur) 
+INSERT INTO Avions.ModeleAvion (MarqueID, NomModele, AnneeLancement, CapacitePassagers, Longueur) 
 VALUES (2, 'Cherokee', 1960, 4, 7.52),
        (2, 'Cherokee 6', 1965, 6, 8.69),
        (2, 'Piper PA-28 Arrow', 1967, 4, 8.23),
@@ -22,7 +22,7 @@ VALUES (2, 'Cherokee', 1960, 4, 7.52),
 	   GO
 
 -- Insertion des modèles d'avions pour Cirrus
-INSERT INTO ModeleAvion (MarqueID, NomModele, AnneeLancement, CapacitePassagers, Longueur) 
+INSERT INTO Avions.ModeleAvion (MarqueID, NomModele, AnneeLancement, CapacitePassagers, Longueur) 
 VALUES (3, 'SR20', 1999, 4, 8.15),
        (3, 'SR22', 2001, 5, 8.56),
        (3, 'SR22T', 2001, 5, 8.56);
@@ -31,7 +31,7 @@ VALUES (3, 'SR20', 1999, 4, 8.15),
 
 
 -- Insertion des caractéristiques techniques pour les modèles d'avions de Cessna
-INSERT INTO CaracteristiqueTechnique (NomCaracteristique, Description, UniteMesure, GammeValeurs, ModeleAvionID) 
+INSERT INTO Avions.CaracteristiqueTechnique (NomCaracteristique, Description, UniteMesure, GammeValeurs, ModeleAvionID) 
 VALUES 
 ('Envergure', 'La distance entre les extrémités des ailes.', 'mètres', 'De 7 à 12', 1),
 ('Masse maximale au décollage', 'Le poids maximal autorisé au décollage.', 'kilogrammes', 'De 750 à 1300', 1),
@@ -40,14 +40,14 @@ VALUES
 GO
 
 -- Insertion des caractéristiques techniques pour les modèles d'avions de Piper (suite)
-INSERT INTO CaracteristiqueTechnique (NomCaracteristique, Description, UniteMesure, GammeValeurs, ModeleAvionID) 
+INSERT INTO Avions.CaracteristiqueTechnique (NomCaracteristique, Description, UniteMesure, GammeValeurs, ModeleAvionID) 
 VALUES 
 ('Nombre de moteurs', 'Le nombre total de moteurs installés sur l''avion.', 'unités', '1', 5),
 ('Rayon d''action', 'La distance maximale que l''avion peut parcourir sans ravitaillement.', 'kilomètres', 'De 800 à 1100', 5);
 GO
 
 -- Insertion des caractéristiques techniques pour les modèles d'avions de Cirrus
-INSERT INTO CaracteristiqueTechnique (NomCaracteristique, Description, UniteMesure, GammeValeurs, ModeleAvionID) 
+INSERT INTO Avions.CaracteristiqueTechnique (NomCaracteristique, Description, UniteMesure, GammeValeurs, ModeleAvionID) 
 VALUES 
 ('Envergure', 'La distance entre les extrémités des ailes.', 'mètres', 'De 7 à 12', 9),
 ('Masse maximale au décollage', 'Le poids maximal autorisé au décollage.', 'kilogrammes', 'De 700 à 1200', 9),
@@ -58,7 +58,7 @@ GO
 
 
 -- Insertion des performances
-INSERT INTO Performance (VitesseMax, AltitudeMax) 
+INSERT INTO industries.Performance (VitesseMax, AltitudeMax) 
 VALUES 
 (200, 5000),
 (250, 6000),
@@ -67,7 +67,7 @@ GO
 
 
 -- Insertion des avions
-INSERT INTO Avion (ModeleAvionID, PerformanceID, Nom, DateFabrication, Poids) 
+INSERT INTO Avions.Avion (ModeleAvionID, PerformanceID, Nom, DateFabrication, Poids) 
 VALUES 
 (1, 1, 'Cessna 172 Skyhawk II', '1960-01-01', 1250),
 (2, 2, 'Cessna 182 Skylane II', '1962-01-01', 1450),
