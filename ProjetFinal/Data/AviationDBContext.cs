@@ -19,6 +19,7 @@ namespace ProjetFinal.Data
 
         public virtual DbSet<Avion> Avions { get; set; } = null!;
         public virtual DbSet<CaracteristiqueTechnique> CaracteristiqueTechniques { get; set; } = null!;
+        public virtual DbSet<Changelog> Changelogs { get; set; } = null!;
         public virtual DbSet<Marque> Marques { get; set; } = null!;
         public virtual DbSet<ModeleAvion> ModeleAvions { get; set; } = null!;
         public virtual DbSet<Performance> Performances { get; set; } = null!;
@@ -49,12 +50,17 @@ namespace ProjetFinal.Data
             modelBuilder.Entity<CaracteristiqueTechnique>(entity =>
             {
                 entity.HasKey(e => e.CaracteristiqueId)
-                    .HasName("PK__Caracter__BF68064F7731C4CB");
+                    .HasName("PK__Caracter__BF68064FC7D32DDB");
 
                 entity.HasOne(d => d.ModeleAvion)
                     .WithMany(p => p.CaracteristiqueTechniques)
                     .HasForeignKey(d => d.ModeleAvionId)
                     .HasConstraintName("FK_ModeleAvionID");
+            });
+
+            modelBuilder.Entity<Changelog>(entity =>
+            {
+                entity.Property(e => e.InstalledOn).HasDefaultValueSql("(getdate())");
             });
 
             modelBuilder.Entity<ModeleAvion>(entity =>

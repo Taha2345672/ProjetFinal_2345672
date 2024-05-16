@@ -17,7 +17,7 @@ CREATE TABLE Avions.ModeleAvion (
     AnneeLancement INT,
     CapacitePassagers INT DEFAULT 0,
     Longueur DECIMAL(10,2),
-    CONSTRAINT FK_MarqueID FOREIGN KEY (MarqueID) REFERENCES Marque(MarqueID),
+    CONSTRAINT FK_MarqueID FOREIGN KEY (MarqueID) REFERENCES Avions.Marque(MarqueID),
     CONSTRAINT CHK_AnneeLancement CHECK (AnneeLancement >= 1900 AND AnneeLancement <= YEAR(GETDATE()))
 );
 

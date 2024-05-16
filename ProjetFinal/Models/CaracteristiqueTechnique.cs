@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ProjetFinal.Models
 {
-    [Table("CaracteristiqueTechnique")]
+    [Table("CaracteristiqueTechnique", Schema = "Avions")]
     public partial class CaracteristiqueTechnique
     {
         [Key]

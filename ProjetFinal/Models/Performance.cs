@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ProjetFinal.Models
 {
-    [Table("Performance")]
+    [Table("Performance", Schema = "Industries")]
     [Index("VitesseMax", "AltitudeMax", Name = "UC_Performance", IsUnique = true)]
     public partial class Performance
     {
