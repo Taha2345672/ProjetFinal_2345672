@@ -1,12 +1,17 @@
+using Microsoft.EntityFrameworkCore;
 using ProjetFinal.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddDbContext<AviationDBContext>
-    (options =>
-     options.UseSQLServer(builder.Configuration.GetConnectionString("AviationDB")));
+// Add DbContext
+builder.Services.AddDbContext<AviationDBContext>(
+    options => {
+        options.UseSqlServer(builder.Configuration.GetConnectionString("AviationDB"));
+        // options.UseLazyLoadingProxies();
+    });
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
