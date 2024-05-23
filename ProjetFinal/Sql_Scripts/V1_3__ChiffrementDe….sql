@@ -1,4 +1,7 @@
-﻿-- Créer une clé maîtresse avec un mot de passe
+﻿USE AviationDB;
+GO
+
+-- Créer une clé maîtresse avec un mot de passe
 CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'MotDePasseSecret123!';
 
 -- Créer un certificat auto-signé
@@ -13,7 +16,7 @@ CREATE SYMMETRIC KEY MaCleSymetrique
 -- Ajouter un champ pour stocker le bonus secret chiffré
 ALTER TABLE Avions.Avion 
 ADD BonusSecretChiffre VARBINARY(MAX) NULL;
-
+GO
 -- Chiffrer le bonus secret et le stocker dans BonusSecretChiffre
 OPEN SYMMETRIC KEY MaCleSymetrique
     DECRYPTION BY CERTIFICATE MonCertificat;
@@ -39,3 +42,4 @@ BEGIN
     CLOSE SYMMETRIC KEY MaCleSymetrique;
 END;
 GO
+
