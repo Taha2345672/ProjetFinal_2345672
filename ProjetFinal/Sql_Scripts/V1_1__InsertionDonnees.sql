@@ -67,27 +67,27 @@ GO
 
 
 -- Insertion des avions
-INSERT INTO Avions.Avion (ModeleAvionID, PerformanceID, Nom, DateFabrication, Poids) 
+
+INSERT INTO Avions.Avion (ModeleAvionID, PerformanceID, Nom, DateFabrication, Poids, BonusSecret) 
 VALUES 
-(1, 1, 'Cessna 172 Skyhawk II', '1960-01-01', 1250),
-(2, 2, 'Cessna 182 Skylane II', '1962-01-01', 1450),
-(3, 3, 'Cessna 152 II', '1980-01-01', 850),
-(4, 1, 'Cessna Caravan II', '1988-01-01', 2700),
-(5, 2, 'Piper Cherokee II', '1963-01-01', 1150),
-(6, 2, 'Piper Cherokee 6 II', '1967-01-01', 1350),
-(7, 2, 'Piper PA-28 Arrow II', '1970-01-01', 1300),
-(8, 2, 'Piper PA-32 Cherokee Six II', '1968-01-01', 1500),
-(9, 3, 'Cirrus SR20 II', '2002-01-01', 1150),
-(10, 3, 'Cirrus SR22 II', '2004-01-01', 1250),
-(11, 3, 'Cirrus SR22T II', '2004-01-01', 1350),
-(1, 1, 'Cessna 172 Skyhawk III', '1965-01-01', 1300),
-(2, 2, 'Cessna 182 Skylane III', '1968-01-01', 1500),
-(3, 3, 'Cessna 152 III', '1985-01-01', 900),
-(4, 1, 'Cessna Caravan III', '1990-01-01', 2800),
-(5, 2, 'Piper Cherokee III', '1965-01-01', 1200),
-(6, 2, 'Piper Cherokee 6 III', '1969-01-01', 1400),
-(7, 2, 'Piper PA-28 Arrow III', '1972-01-01', 1350),
-(8, 2, 'Piper PA-32 Cherokee Six III', '1970-01-01', 1550),
-(9, 3, 'Cirrus SR20 III', '2005-01-01', 1200),
-(10, 3, 'Cirrus SR22 III', '2007-01-01', 1300);
-GO
+(1, 1, 'Cessna 172 Skyhawk II', '1960-01-01', 1250, 'Secret1'),
+(2, 2, 'Cessna 182 Skylane II', '1962-01-01', 1450, 'Secret2'),
+(3, 3, 'Cessna 152 II', '1980-01-01', 850, 'Secret3'),
+(4, 1, 'Cessna Caravan II', '1988-01-01', 2700, 'Secret4'),
+(5, 2, 'Piper Cherokee II', '1963-01-01', 1150, 'Secret5'),
+(6, 2, 'Piper Cherokee 6 II', '1967-01-01', 1350, 'Secret6'),
+(7, 2, 'Piper PA-28 Arrow II', '1970-01-01', 1300, 'Secret7'),
+(8, 2, 'Piper PA-32 Cherokee Six II', '1968-01-01', 1500, 'Secret8'),
+(9, 3, 'Cirrus SR20 II', '2002-01-01', 1150, 'Secret9'),
+(10, 3, 'Cirrus SR22 II', '2004-01-01', 1250, 'Secret10'),
+(11, 3, 'Cirrus SR22T II', '2004-01-01', 1350, 'Secret11'),
+(1, 1, 'Cessna 172 Skyhawk III', '1965-01-01', 1300, 'Secret12'),
+(2, 2, 'Cessna 182 Skylane III', '1968-01-01', 1500, 'Secret13'),
+(3, 3, 'Cessna 152 III', '1985-01-01', 900, 'Secret14'),
+(4, 1, 'Cessna Caravan III', '1990-01-01', 2800, 'Secret15'),
+(5, 2, 'Piper Cherokee III', '1965-01-01', 1200, 'Secret16'),
+(6, 2, 'Piper Cherokee 6 III', '1969-01-01', 1400, 'Secret17'),
+(7, 2, 'Piper PA-28 Arrow III', '1972-01-01', 1350, 'Secret18'),
+(8, 2, 'Piper PA-32 Cherokee Six III', '1970-01-01', 1550, 'Secret19'),
+(9, 3, 'Cirrus SR20 III', '2005-01-01', 1200, 'Secret20'),
+(10, 3, 'Cirrus SR22 III', '2007-01-01', 1300, 'Secret21');
