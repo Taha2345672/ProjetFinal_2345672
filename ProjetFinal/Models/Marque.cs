@@ -8,7 +8,7 @@ namespace ProjetFinal.Models
 {
     [Table("Marque", Schema = "Avions")]
     [Index("NomMarque", Name = "UC_NomMarque", IsUnique = true)]
-    [Index("NomMarque", Name = "UQ__Marque__B430BC37DD8F03B9", IsUnique = true)]
+    [Index("NomMarque", Name = "UQ__Marque__B430BC3702D253F7", IsUnique = true)]
     public partial class Marque
     {
         public Marque()

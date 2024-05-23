@@ -164,5 +164,13 @@ namespace ProjetFinal.Controllers
         {
           return (_context.ModeleAvions?.Any(e => e.ModeleAvionId == id)).GetValueOrDefault();
         }
+
+
+        public async Task<IActionResult> VueNombreAvionsParMarque()
+        {
+
+            var vueNombreAvionsParMarque = await _context.VueNombreAvionsParMarques.ToListAsync();
+            return View(vueNombreAvionsParMarque);
+        }
     }
 }

@@ -1,60 +1,40 @@
 ﻿@model IEnumerable<ProjetFinal.Models.ModeleAvion>
 
-@{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-primary" asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
+
+<p>
+    <a class="btn btn-secondary" asp-action="VueNombreAvionsParMarque">NombreAvionsParMarque</a>
+</p>
+<table class="table table-striped">
+    <thead class="thead-dark">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NomModele)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AnneeLancement)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CapacitePassagers)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Longueur)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Marque)
-            </th>
-            <th></th>
+            <th>Nom du modèle</th>
+            <th>Année de lancement</th>
+            <th>Capacité de passagers</th>
+            <th>Longueur</th>
+            <th>Marque</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NomModele)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AnneeLancement)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CapacitePassagers)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Longueur)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Marque.MarqueId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ModeleAvionId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ModeleAvionId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ModeleAvionId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.NomModele</td>
+                <td>@item.AnneeLancement</td>
+                <td>@item.CapacitePassagers</td>
+                <td>@item.Longueur</td>
+                <td>@item.Marque.NomMarque</td>
+                <td>
+                    <a class="btn btn-info" asp-action="Edit" asp-route-id="@item.ModeleAvionId">Edit</a>
+                    <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.ModeleAvionId">Details</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.ModeleAvionId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

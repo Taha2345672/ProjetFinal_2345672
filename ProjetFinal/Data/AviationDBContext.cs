@@ -23,6 +23,7 @@ namespace ProjetFinal.Data
         public virtual DbSet<Marque> Marques { get; set; } = null!;
         public virtual DbSet<ModeleAvion> ModeleAvions { get; set; } = null!;
         public virtual DbSet<Performance> Performances { get; set; } = null!;
+        public virtual DbSet<VueNombreAvionsParMarque> VueNombreAvionsParMarques { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -50,7 +51,7 @@ namespace ProjetFinal.Data
             modelBuilder.Entity<CaracteristiqueTechnique>(entity =>
             {
                 entity.HasKey(e => e.CaracteristiqueId)
-                    .HasName("PK__Caracter__BF68064FC7D32DDB");
+                    .HasName("PK__Caracter__BF68064FC4BCE9A3");
 
                 entity.HasOne(d => d.ModeleAvion)
                     .WithMany(p => p.CaracteristiqueTechniques)
@@ -71,6 +72,11 @@ namespace ProjetFinal.Data
                     .WithMany(p => p.ModeleAvions)
                     .HasForeignKey(d => d.MarqueId)
                     .HasConstraintName("FK_MarqueID");
+            });
+
+            modelBuilder.Entity<VueNombreAvionsParMarque>(entity =>
+            {
+                entity.ToView("Vue_NombreAvionsParMarque");
             });
 
             OnModelCreatingPartial(modelBuilder);

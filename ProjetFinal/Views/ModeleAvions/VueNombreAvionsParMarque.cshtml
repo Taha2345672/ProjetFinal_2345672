@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ProjetFinal.Models.VueNombreAvionsParMarque>
+
+<h1>Liste des nombres d'avions par marque</h1>
+
+<style>
+    /* Style pour la table */
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        border: 1px solid #ddd;
+    }
+
+        /* Style pour les cellules de la table */
+        .table th, .table td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Style pour les lignes impaires */
+        .table tbody tr:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+
+        /* Style pour les lignes au survol */
+        .table tbody tr:hover {
+            background-color: #ddd;
+        }
+
+    /* Style pour le message "Aucun résultat trouvé" */
+    .empty-message {
+        font-style: italic;
+        color: #999;
+    }
+</style>
+
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom de la marque</th>
+                <th>Nombre d'avions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.NomMarque</td>
+                    <td>@item.NombreAvions</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p class="empty-message">Aucun résultat trouvé.</p>
+}
