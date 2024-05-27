@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using ProjetFinal.Data;
 using ProjetFinal.Models;
@@ -35,15 +36,52 @@ namespace ProjetFinal.Controllers
             }
 
             var avion = await _context.Avions
-                .Include(a => a.ModeleAvion)
-                .Include(a => a.Performance)
-                .FirstOrDefaultAsync(m => m.AvionId == id);
+         .Include(a => a.ModeleAvion)
+         .Include(a => a.Performance)
+         .FirstOrDefaultAsync(m => m.AvionId == id);
+            
+            
             if (avion == null)
             {
                 return NotFound();
             }
 
+            // Déchiffrement du champ BonusSecret
+            var decryptedValue = await DecryptAsync(avion.BonusSecret);
+
+            ViewData["DecryptedBonusSecret"] = decryptedValue;
+
             return View(avion);
+        }
+
+        private async Task<string> DecryptAsync(string cipherText)
+        {
+            string decryptedText = string.Empty;
+
+            try
+            {
+                // Code de déchiffrement à implémenter ici
+                // Utilisez votre logique de déchiffrement appropriée
+                // Par exemple, si vous utilisez une procédure stockée nommée USP_Dechiffrement, vous pouvez appeler cette procédure ici
+                string query = "EXEC .USP_Dechiffrement @CipherText";
+                SqlParameter parameter = new SqlParameter("@CipherText", cipherText);
+                var decryptedResult = await _context.Database.ExecuteSqlRawAsync(query, parameter);
+
+                // Assumez que decryptedResult contient le texte déchiffré retourné par la procédure stockée
+                if (decryptedResult != null)
+                {
+                    decryptedText = decryptedResult.ToString();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                // Gestion des erreurs de déchiffrement
+                // Assurez-vous de traiter correctement les exceptions selon vos besoins
+                Console.WriteLine("Erreur de déchiffrement : " + ex.Message);
+            }
+
+            return decryptedText;
         }
 
         // GET: Avions/Create
@@ -161,17 +199,14 @@ namespace ProjetFinal.Controllers
             {
                 _context.Avions.Remove(avion);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool AvionExists(int id)
         {
-          return (_context.Avions?.Any(e => e.AvionId == id)).GetValueOrDefault();
+            return (_context.Avions?.Any(e => e.AvionId == id)).GetValueOrDefault();
         }
-
-
-
     }
 }
