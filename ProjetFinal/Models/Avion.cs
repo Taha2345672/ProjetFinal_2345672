@@ -37,7 +37,10 @@ namespace ProjetFinal.Models
         public decimal? Poids { get; set; }
 
         // Bonus secret de l'avion
-       public string? BonusSecret { get; set; }
+        public string? BonusSecret { get; set; }
+
+        // Données binaires de l'image de l'avion
+      //  public byte[]? ImageData { get; set; }
 
         // Navigation vers le modèle d'avion associé
         [ForeignKey("ModeleAvionId")]
