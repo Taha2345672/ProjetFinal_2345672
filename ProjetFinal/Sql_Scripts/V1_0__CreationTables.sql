@@ -49,7 +49,7 @@ CREATE TABLE Avions.Avion (
     ModeleAvionID INT,
     PerformanceID INT,
     Nom VARCHAR(255) NOT NULL,
-    BonusSecret  VARBINARY(MAX),
+    BonusSecret  NVARCHAR(MAX),
     DateFabrication DATE,
     Poids DECIMAL(10,2),
     CONSTRAINT FK_ModeleAvionID_Avion FOREIGN KEY (ModeleAvionID) REFERENCES Avions.ModeleAvion(ModeleAvionID),
