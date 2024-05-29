@@ -1,24 +1,14 @@
-﻿-- Créer une procédure stockée pour insérer une image dans la table des avions
-CREATE PROCEDURE [Avions].[InsertImage]
-    @AvionID INT,
-    @ImageData VARBINARY(MAX)
-AS
-BEGIN
-    SET NOCOUNT ON;
-
-    -- Vérifier si l'avion existe
-    IF EXISTS (SELECT 1 FROM Avions.Avion WHERE AvionID = @AvionID)
-    BEGIN
-        -- Mettre à jour l'image de l'avion s'il existe déjà
-        UPDATE Avions.Avion
-        SET ImageData = @ImageData
-        WHERE AvionID = @AvionID;
-    END
-    ELSE
-    BEGIN
-        -- Insérer une nouvelle entrée avec l'image
-        INSERT INTO Avions.Avion (AvionID, ImageData)
-        VALUES (@AvionID, @ImageData);
-    END
-END;
+﻿USE AviationDB
 GO
+
+-- Ajouter une nouvelle colonne pour l'identifiant unique
+ALTER TABLE Avions.Avion
+ADD RowGuid uniqueidentifier NOT NULL ROWGUIDCOL DEFAULT newid();
+
+-- Ajouter une contrainte d'unicité sur la colonne RowGuid
+ALTER TABLE Avions.Avion
+ADD CONSTRAINT _RowGuid UNIQUE (RowGuid);
+
+-- Modifier le type de données de la colonne Image pour stocker les images
+ALTER TABLE Avions.Avion
+ADD image VARBINARY(MAX) FILESTREAM NULL;

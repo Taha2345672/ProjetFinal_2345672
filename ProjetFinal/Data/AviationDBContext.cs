@@ -46,6 +46,10 @@ namespace ProjetFinal.Data
                     .WithMany(p => p.Avions)
                     .HasForeignKey(d => d.PerformanceId)
                     .HasConstraintName("FK_PerformanceID");
+
+                entity.Property(e => e.ImageData)
+                    .HasColumnName("ImageData")
+                    .HasColumnType("varbinary(max)");
             });
 
             modelBuilder.Entity<CaracteristiqueTechnique>(entity =>

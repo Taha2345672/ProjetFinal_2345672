@@ -13,38 +13,38 @@ namespace ProjetFinal.Models
         [Column("id")] // Nom de la colonne dans la base de données
         public int Id { get; set; }
 
-        [Column("type")] // Nom de la colonne dans la base de données
+        [Column("type")] 
         public byte? Type { get; set; }
 
-        [Column("version")] // Nom de la colonne dans la base de données
-        [StringLength(50)] // Longueur maximale de la chaîne
-        [Unicode(false)] // Indique que la chaîne ne contient pas de caractères Unicode
+        [Column("version")] 
+        [StringLength(50)] 
+        [Unicode(false)] 
         public string? Version { get; set; }
 
-        [Column("description")] // Nom de la colonne dans la base de données
-        [StringLength(200)] // Longueur maximale de la chaîne
-        [Unicode(false)] // Indique que la chaîne ne contient pas de caractères Unicode
+        [Column("description")] 
+        [StringLength(200)] 
+        [Unicode(false)] 
         public string Description { get; set; } = null!;
 
-        [Column("name")] // Nom de la colonne dans la base de données
-        [StringLength(300)] // Longueur maximale de la chaîne
-        [Unicode(false)] // Indique que la chaîne ne contient pas de caractères Unicode
+        [Column("name")] 
+        [StringLength(300)] 
+        [Unicode(false)] 
         public string Name { get; set; } = null!;
 
-        [Column("checksum")] // Nom de la colonne dans la base de données
-        [StringLength(32)] // Longueur maximale de la chaîne
-        [Unicode(false)] // Indique que la chaîne ne contient pas de caractères Unicode
+        [Column("checksum")] 
+        [StringLength(32)] 
+        [Unicode(false)]
         public string? Checksum { get; set; }
 
-        [Column("installed_by")] // Nom de la colonne dans la base de données
-        [StringLength(100)] // Longueur maximale de la chaîne
-        [Unicode(false)] // Indique que la chaîne ne contient pas de caractères Unicode
+        [Column("installed_by")] 
+        [StringLength(100)] 
+        [Unicode(false)] 
         public string InstalledBy { get; set; } = null!;
 
-        [Column("installed_on", TypeName = "datetime")] // Spécifie le type de colonne comme datetime
+        [Column("installed_on", TypeName = "datetime")]
         public DateTime InstalledOn { get; set; }
 
-        [Column("success")] // Nom de la colonne dans la base de données
+        [Column("success")]
         public bool Success { get; set; }
     }
 }

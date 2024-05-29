@@ -209,26 +209,26 @@ namespace ProjetFinal.Controllers
             return (_context.Avions?.Any(e => e.AvionId == id)).GetValueOrDefault();
         }
 
-        //// Action pour télécharger une image
-        //[HttpPost]
-        //public async Task<IActionResult> TelechargerImage(int id, IFormFile file)
-        //{
-        //    var avion = await _context.Avions.FindAsync(id);
-        //    if (avion == null || file == null || file.Length == 0)
-        //    {
-        //        return RedirectToAction("Details", new { id = id });
-        //    }
+        // Action pour télécharger une image
+        [HttpPost]
+        public async Task<IActionResult> TelechargerImage(int id, IFormFile file)
+        {
+            var avion = await _context.Avions.FindAsync(id);
+            if (avion == null || file == null || file.Length == 0)
+            {
+                return RedirectToAction("Details", new { id = id });
+            }
 
-        //    // Convertir le fichier en tableau de bytes
-        //    using (var memoryStream = new MemoryStream())
-        //    {
-        //        await file.CopyToAsync(memoryStream);
-        //        avion.ImageData = memoryStream.ToArray();
-        //    }
+            // Convertir le fichier en tableau de bytes
+            using (var memoryStream = new MemoryStream())
+            {
+                await file.CopyToAsync(memoryStream);
+                avion.ImageData = memoryStream.ToArray();
+            }
 
-        //    await _context.SaveChangesAsync();
-        //    return RedirectToAction("Details", new { id = id });
-        //}
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Details", new { id = id });
+        }
 
     }
 }

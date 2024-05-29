@@ -51,5 +51,10 @@ namespace ProjetFinal.Models
         [ForeignKey("PerformanceId")]
         [InverseProperty("Avions")]
         public virtual Performance? Performance { get; set; }
+
+
+        // Données binaires de l'image de l'avion
+        public byte[]? ImageData { get; set; }
     }
+
 }
