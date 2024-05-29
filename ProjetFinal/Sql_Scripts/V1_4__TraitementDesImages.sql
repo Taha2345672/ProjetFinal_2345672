@@ -11,4 +11,5 @@ ADD CONSTRAINT _RowGuid UNIQUE (RowGuid);
 
 -- Modifier le type de données de la colonne Image pour stocker les images
 ALTER TABLE Avions.Avion
-ADD image VARBINARY(MAX) FILESTREAM NULL;
+ADD imageData VARBINARY(MAX) FILESTREAM NULL;
+GO

@@ -40,7 +40,8 @@ namespace ProjetFinal.Models
         public string? BonusSecret { get; set; }
 
         // Données binaires de l'image de l'avion
-      //  public byte[]? ImageData { get; set; }
+        [Column(TypeName = "varbinary(max)")]
+        public byte[]? ImageData { get; set; }
 
         // Navigation vers le modèle d'avion associé
         [ForeignKey("ModeleAvionId")]
@@ -51,10 +52,5 @@ namespace ProjetFinal.Models
         [ForeignKey("PerformanceId")]
         [InverseProperty("Avions")]
         public virtual Performance? Performance { get; set; }
-
-
-        // Données binaires de l'image de l'avion
-        public byte[]? ImageData { get; set; }
     }
-
 }

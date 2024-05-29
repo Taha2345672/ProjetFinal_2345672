@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
@@ -36,11 +38,10 @@ namespace ProjetFinal.Controllers
             }
 
             var avion = await _context.Avions
-         .Include(a => a.ModeleAvion)
-         .Include(a => a.Performance)
-         .FirstOrDefaultAsync(m => m.AvionId == id);
-            
-            
+                .Include(a => a.ModeleAvion)
+                .Include(a => a.Performance)
+                .FirstOrDefaultAsync(m => m.AvionId == id);
+
             if (avion == null)
             {
                 return NotFound();
@@ -230,5 +231,16 @@ namespace ProjetFinal.Controllers
             return RedirectToAction("Details", new { id = id });
         }
 
+        // Action pour afficher l'image
+        public async Task<IActionResult> AfficherImage(int id)
+        {
+            var avion = await _context.Avions.FindAsync(id);
+            if (avion == null || avion.ImageData == null)
+            {
+                return NotFound();
+            }
+
+            return File(avion.ImageData, "image/jpeg");
+        }
     }
 }
