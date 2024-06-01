@@ -1,4 +1,3 @@
-
 -- Création de la table Marque avec une contrainte UNIQUE sur NomMarque
 CREATE TABLE Avions.Marque (
     MarqueID INT PRIMARY KEY IDENTITY,

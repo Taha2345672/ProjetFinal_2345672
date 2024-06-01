@@ -52,5 +52,10 @@ namespace ProjetFinal.Models
        
         [InverseProperty("ModeleAvion")]
         public virtual ICollection<CaracteristiqueTechnique> CaracteristiqueTechniques { get; set; }
+
+       // public string ImageUrl { get; set; }
+
+
+
     }
 }

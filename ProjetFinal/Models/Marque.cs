@@ -37,7 +37,9 @@ namespace ProjetFinal.Models
     
         public int? AnneeFondation { get; set; }
 
-       
+        //public string? imageURl { get; set; }
+
+
         [InverseProperty("Marque")]
         public virtual ICollection<ModeleAvion> ModeleAvions { get; set; }
     }
